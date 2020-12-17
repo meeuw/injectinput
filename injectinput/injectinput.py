@@ -5,7 +5,7 @@ import time
 
 def main():
     with evdev.UInput(
-        evdev.util.find_ecodes_by_regex(r"KEY_([A-Z]|SPACE|LEFTSHIFT|ENTER)$")
+        evdev.util.find_ecodes_by_regex(r"KEY_([A-Z0-9]|SPACE|LEFTSHIFT|ENTER)$")
     ) as ui:
         escape = False
         for letter in sys.argv[1]:
