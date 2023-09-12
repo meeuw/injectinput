@@ -1,3 +1,3 @@
 /dist/
 /injectinput.egg-info/
-/injectinput/__pycache__/
+__pycache__
