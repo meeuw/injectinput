@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "injectinput"
-version = "0.1.4"
+version = "0.1.5"
 description = "Inject input"
 authors = ["Dick Marinus <dick@mrns.nl>"]
 license = "GPL-3.0"
 
 [tool.poetry.dependencies]
 python = ">= 3.8"
-evdev = "^1.7.1"
+evdev = ">= 1.6.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
