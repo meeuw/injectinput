@@ -1,6 +1,7 @@
 """
 Inject argument as virtual keypresses
 """
+
 import sys
 import time
 import evdev

@@ -1,6 +1,7 @@
 """
 Tests for injectinput
 """
+
 import unittest.mock
 import evdev.ecodes
 import injectinput.injectinput
@@ -76,6 +77,7 @@ def test_special_characters():
         unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_LEFTSHIFT"], 0),
         unittest.mock.call.syn(),
     ]
+
 
 def test_last_upper():
     """
