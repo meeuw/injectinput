@@ -50,7 +50,7 @@ def test_special_characters():
     Test special characters
     """
     uinput = unittest.mock.MagicMock()
-    injectinput.injectinput.write_characters(uinput, "\\rL[(")
+    injectinput.injectinput.write_characters(uinput, "\\rL[(\\\\")
     assert uinput.mock_calls == [
         unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_ENTER"], 1),
         unittest.mock.call.syn(),
@@ -75,6 +75,10 @@ def test_special_characters():
         unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_9"], 0),
         unittest.mock.call.syn(),
         unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_LEFTSHIFT"], 0),
+        unittest.mock.call.syn(),
+        unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_BACKSLASH"], 1),
+        unittest.mock.call.syn(),
+        unittest.mock.call.write(1, evdev.ecodes.ecodes["KEY_BACKSLASH"], 0),
         unittest.mock.call.syn(),
     ]
 

@@ -8,10 +8,26 @@ import evdev
 
 translate_upper = {
     " ": evdev.ecodes.ecodes["KEY_SPACE"],
+    "!": evdev.ecodes.ecodes["KEY_1"],
+    "@": evdev.ecodes.ecodes["KEY_2"],
+    "#": evdev.ecodes.ecodes["KEY_3"],
+    "$": evdev.ecodes.ecodes["KEY_4"],
+    "%": evdev.ecodes.ecodes["KEY_5"],
+    "^": evdev.ecodes.ecodes["KEY_6"],
+    "&": evdev.ecodes.ecodes["KEY_7"],
+    "*": evdev.ecodes.ecodes["KEY_8"],
     "(": evdev.ecodes.ecodes["KEY_9"],
     ")": evdev.ecodes.ecodes["KEY_0"],
     "_": evdev.ecodes.ecodes["KEY_MINUS"],
     "+": evdev.ecodes.ecodes["KEY_EQUAL"],
+    "{": evdev.ecodes.ecodes["KEY_LEFTBRACE"],
+    "}": evdev.ecodes.ecodes["KEY_RIGHTBRACE"],
+    "|": evdev.ecodes.ecodes["KEY_BACKSLASH"],
+    ":": evdev.ecodes.ecodes["KEY_SEMICOLON"],
+    '"': evdev.ecodes.ecodes["KEY_APOSTROPHE"],
+    "<": evdev.ecodes.ecodes["KEY_COMMA"],
+    ">": evdev.ecodes.ecodes["KEY_DOT"],
+    "?": evdev.ecodes.ecodes["KEY_SLASH"],
 }
 
 translate_lower = {
@@ -20,6 +36,11 @@ translate_lower = {
     "[": evdev.ecodes.ecodes["KEY_LEFTBRACE"],
     "]": evdev.ecodes.ecodes["KEY_RIGHTBRACE"],
     "=": evdev.ecodes.ecodes["KEY_EQUAL"],
+    ";": evdev.ecodes.ecodes["KEY_SEMICOLON"],
+    "'": evdev.ecodes.ecodes["KEY_APOSTROPHE"],
+    ",": evdev.ecodes.ecodes["KEY_COMMA"],
+    ".": evdev.ecodes.ecodes["KEY_DOT"],
+    "/": evdev.ecodes.ecodes["KEY_SLASH"],
 }
 
 translate = {}
@@ -35,12 +56,15 @@ def write_characters(uinput, characters):
     for character in characters:
         if character in translate:
             key = translate[character]
-        elif character == "\\":
+        elif character == "\\" and not escape:
             escape = True
             continue
         elif escape and character == "r":
             escape = False
             key = evdev.ecodes.ecodes["KEY_ENTER"]
+        elif escape and character == "\\":
+            escape = False
+            key = evdev.ecodes.ecodes["KEY_BACKSLASH"]
         else:
             key = evdev.ecodes.ecodes["KEY_" + character.upper()]
         if character.isupper() or character in translate_upper:
