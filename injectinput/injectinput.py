@@ -8,6 +8,7 @@ import evdev
 
 translate_upper = {
     " ": evdev.ecodes.ecodes["KEY_SPACE"],
+    "~": evdev.ecodes.ecodes["KEY_GRAVE"],
     "!": evdev.ecodes.ecodes["KEY_1"],
     "@": evdev.ecodes.ecodes["KEY_2"],
     "#": evdev.ecodes.ecodes["KEY_3"],
@@ -32,6 +33,7 @@ translate_upper = {
 
 translate_lower = {
     " ": evdev.ecodes.ecodes["KEY_SPACE"],
+    "`": evdev.ecodes.ecodes["KEY_GRAVE"],
     "-": evdev.ecodes.ecodes["KEY_MINUS"],
     "[": evdev.ecodes.ecodes["KEY_LEFTBRACE"],
     "]": evdev.ecodes.ecodes["KEY_RIGHTBRACE"],
