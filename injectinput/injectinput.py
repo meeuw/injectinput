@@ -73,12 +73,13 @@ def write_characters(uinput, characters):
             uinput.write(
                 evdev.ecodes.ecodes["EV_KEY"], evdev.ecodes.ecodes["KEY_LEFTSHIFT"], 1
             )
+            time.sleep(0.05)
             uinput.syn()
 
         uinput.write(evdev.ecodes.ecodes["EV_KEY"], key, 1)
+        time.sleep(0.05)
         uinput.syn()
         uinput.write(evdev.ecodes.ecodes["EV_KEY"], key, 0)
-        time.sleep(0.05)
         uinput.syn()
 
         if character.isupper() or character in translate_upper:
